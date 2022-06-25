@@ -39,9 +39,9 @@ namespace The_Other_Fountain_of_Objects
             }
         }
 
-        public void SetPlayerLocation(Board board,Player player, (int x,int y) input)
+        public void SetPlayerLocation(Board board,Player player, (int x,int y) input) //(DONE)
         {
-            if (player.playerLocation.Item1 + input.x <= board.GetSize() && player.playerLocation.Item2 + input.y <= board.GetSize() && player.playerLocation.Item1 + input.x > -1 && player.playerLocation.Item1 + input.y > -1)
+            if (player.playerLocation.Item1 + input.x <= board.GetSize() && player.playerLocation.Item2 + input.y <= board.GetSize() && player.playerLocation.Item1 + input.x > -1 && player.playerLocation.Item2 + input.y > -1)
             {
                 player.playerLocation = (player.playerLocation.Item1 + input.x, player.playerLocation.Item2 + input.y);
             }

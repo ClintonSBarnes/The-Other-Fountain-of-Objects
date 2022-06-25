@@ -93,6 +93,15 @@ namespace The_Other_Fountain_of_Objects
             {
                 Console.WriteLine(maelstromNear);
             }
+            if (board.amarokPresent == true || board.pitPresent == true)
+            {
+                //insert death logic here.
+            }
+            if (board.maelstromsPresent == true)
+            {
+                //insert random movement logic here.
+            }
+           
             if (fountain.GetFountainLocation == player.GetPlayerPosition && fountain.GetFountainOn() == false)
             {
                 //need to finish logic for fountain off/on...
