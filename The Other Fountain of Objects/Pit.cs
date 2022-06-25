@@ -9,22 +9,22 @@ namespace The_Other_Fountain_of_Objects
     internal class Pit
     {
         
-        public static (int, int)[] pits = new (int, int)[4];
+        public static (int, int)[] pits = new (int, int)[8];
 
         //*****only outward facing methods******
-        public static void PitSetUp(int difficulty)
+        public static void PitSetUp(int difficulty, Player player)
         {
             if (difficulty == 4)
             {
-                PitGenerator(1, 4);
+                PitGenerator(1, 4, player);
             }
             else if (difficulty == 6)
             {
-                PitGenerator(2, 6);
+                PitGenerator(2, 6, player);
             }
             else
             {
-                PitGenerator(4, 8);
+                PitGenerator(4, 8, player);
             }
         }
         public (int, int) GetLocation(int pitArrayPosition)
@@ -44,24 +44,28 @@ namespace The_Other_Fountain_of_Objects
 
         //utility methods - protected for use only in this class.
         //builds and sets the location of the Pit randomly
-        private static void PitGenerator(int Count, int size)
+        private static void PitGenerator(int Count, int size, Player player)
         {
             for (int i = 0; i < Count; i++)
             {                
-                EstablishPit(i, size);
+                EstablishPit(i, size, player);
             }
         }
-        private static void EstablishPit(int pitArrayPosition,int size)
+        private static void EstablishPit(int pitArrayPosition,int size, Player player)
         {
 
             Random number = new Random();
-            SetPit(pitArrayPosition,(number.Next(1, size), number.Next(1, size)));
+            SetPit(size,pitArrayPosition,(number.Next(1, size), number.Next(1, size)), player);
 
         }
 
-        private static void SetPit(int pitArrayPosition,(int x, int y) location)
+        private static void SetPit(int size,int pitArrayPosition,(int x, int y) location, Player player)
         {
-            pits[pitArrayPosition] = (location);
+            if (location != player.GetPlayerPosition())
+            {
+                pits[pitArrayPosition] = (location);
+            }
+            else EstablishPit(pitArrayPosition, size, player);
         }
     }
 }

@@ -21,12 +21,12 @@ namespace The_Other_Fountain_of_Objects
         //RUN - This is the method that handles the program.
         public void Run()
         {
-            
+
             StartGame(); //this method sets up the initial game state.
 
             while (GetGameState() == GameState.playing)
             {
-                Dialogue.RoomStatus(board,player,fountain);
+                Dialogue.RoomStatus(board, player, fountain);
 
             }
 
@@ -37,8 +37,8 @@ namespace The_Other_Fountain_of_Objects
 
 
 
-        public  bool GetStillPlaying()
-        { return _stillPlaying;}
+        public bool GetStillPlaying()
+        { return _stillPlaying; }
 
         public void SetGameState() // uses current board and player states to determine if the GameState.
         {
@@ -63,10 +63,10 @@ namespace The_Other_Fountain_of_Objects
 
         public void AdvasaryCreator()
         {
-            Pit.PitSetUp(board.GetSize());
-            Amarok.AmarokSetUp(board.GetSize());
-            Maelstroms.MaelstromsSetUp(board.GetSize());
-            fountain.EstablishFountain(board.GetSize());            
+            Pit.PitSetUp(board.GetSize(), player);
+            Amarok.AmarokSetUp(board.GetSize(), player);
+            Maelstroms.MaelstromsSetUp(board.GetSize(), player);
+            fountain.EstablishFountain(board.GetSize(), player);
         }
         public GameState GetGameState()
         { return _currentState; }
@@ -76,9 +76,10 @@ namespace The_Other_Fountain_of_Objects
             Dialogue.IntroductionPhrase();//shows welcome text that explains the game.
             Dialogue.Difficulty(board); //collects user input for difficutly level
             SetGameState(); //establishes game state for beginning 
-            board.BoardBuilder(InputValidator.GetVaidatedSize());
-            AdvasaryCreator();
-            player.InitialPlayerLocation();
+            board.BoardBuilder(InputValidator.GetVaidatedSize());//builds array of coordinates reprsenting the board.
+            player.InitialPlayerLocation();//places the player at the start/end location.
+            AdvasaryCreator(); //generates advasaries in the quantity appropriate for the board size, and it places them randomly.
+
         }
 
 

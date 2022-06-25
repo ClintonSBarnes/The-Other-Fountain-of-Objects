@@ -37,17 +37,24 @@ namespace The_Other_Fountain_of_Objects
             else return false;
         }
 
-        public  void EstablishFountain(int size)
+        public  void EstablishFountain(int size, Player player)
         {
             fountainOn = false;
             Random number = new Random();
-            SetFountain((number.Next(1, size), number.Next(1,size)));
+            SetFountain(size, (number.Next(1, size), number.Next(1,size)), player);
             
         }
 
-        public  void SetFountain((int x, int y) location)
+        public  void SetFountain(int size, (int x, int y) location, Player player)
         {
-            fountainLocation = (location);
+            if (location != player.GetPlayerPosition())
+            {
+                fountainLocation = (location);
+            }
+            else
+            {
+                EstablishFountain(size, player);
+            }
         }
 
         public (int,int)  GetFountainLocation()

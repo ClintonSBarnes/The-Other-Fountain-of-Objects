@@ -45,7 +45,7 @@ namespace The_Other_Fountain_of_Objects
             Console.Clear();
         }
 
-        public static void PlayerMoveMenu(Board board, Player player)
+        public static void PlayerMoveMenu(Board board, Player player, Fountain fountain)
         {
             bool validTest = false;
             string input;
@@ -64,7 +64,8 @@ namespace The_Other_Fountain_of_Objects
                 }
                 board.BoardUpdater(player);
             }
-            Console.Clear();
+            board.BoardUpdater(player);
+            Dialogue.RoomStatus(board, player, fountain);
 
 
         }
@@ -74,10 +75,12 @@ namespace The_Other_Fountain_of_Objects
 
         }
 
-        public static void RoomStatus(Board board, Player player, Fountain foutain)
+        public static void RoomStatus(Board board, Player player, Fountain fountain)
         {
             PrintBreakLine();
-            Console.WriteLine($"You are in the room at (Row={board.GetPlayerPosition().Item1}, Column={board.GetPlayerPosition().Item2}");
+            board.RoomDetailsBuilder(board, player.GetPlayerPosition(),fountain);//***************current to do.
+            board.BoardUpdater(player);//not sure about this location for this fuction.
+            Console.WriteLine($"You are in the room at (Row={board.GetPlayerPosition().Item1}, Column={board.GetPlayerPosition().Item2})");
             if (board.pitNear == true)
             {
                 Console.WriteLine(pitNear);
@@ -90,8 +93,9 @@ namespace The_Other_Fountain_of_Objects
             {
                 Console.WriteLine(maelstromNear);
             }
-            if (foutain.GetFountainLocation == player.GetPlayerPosition && foutain.GetFountainOn() == false)
+            if (fountain.GetFountainLocation == player.GetPlayerPosition && fountain.GetFountainOn() == false)
             {
+                //need to finish logic for fountain off/on...
                 string fountainInput;
                 bool inputValidation = false;
                 while (inputValidation == false)
@@ -99,7 +103,7 @@ namespace The_Other_Fountain_of_Objects
                     Console.WriteLine(fountainOff);
                     Console.WriteLine("Would you like to turn the fountian on? (Y)es or (N)o: ");
                     fountainInput = Console.ReadLine();
-                    inputValidation = InputValidator.CheckFountainOn(foutain, fountainInput);
+                    inputValidation = InputValidator.CheckFountainOn(fountain, fountainInput);
                     if (inputValidation == false)
                     {
                         Console.WriteLine("That was not a valid input. Please try again.");
@@ -107,14 +111,14 @@ namespace The_Other_Fountain_of_Objects
                 }
 
             }
-            if (foutain.GetFountainLocation == player.GetPlayerPosition && foutain.GetFountainOn() == true)
+            if (fountain.GetFountainLocation == player.GetPlayerPosition && fountain.GetFountainOn() == true)
             {
                 Console.WriteLine(fountainOn);
             }
 
             Console.WriteLine("What do you want to do?");
 
-            PlayerMoveMenu(board, player);
+            PlayerMoveMenu(board, player, fountain);
 
         }
         public static void PrintBreakLine()

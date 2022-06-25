@@ -25,6 +25,7 @@ namespace The_Other_Fountain_of_Objects
         public bool pitPresent = false;
         public bool amarokPresent = false;
         public bool maelstromsPresent = false;
+        public bool fountianPresent = false;
 
 
         public bool pitNear = false;
@@ -36,131 +37,155 @@ namespace The_Other_Fountain_of_Objects
 
 
 
-        public void RoomDetailsBuilder(Board board, (int, int) playerLocation)
+        public void RoomDetailsBuilder(Board board, (int, int) playerLocation, Fountain fountain)
         {
             (int, int) coordToCheckAgainst = (0, 0);
+            for (int k = 0; k < board.GetSize(); k++)
+            {
 
-            for (int i = 0; i < board.GetSize(); i++)
-            {
-                for (int j = 0; j < board.GetSize(); j++)
-                    coordToCheckAgainst = (i, j);
-                if (coordToCheckAgainst == maelstroms[i] && coordToCheckAgainst == playerPosition)
+
+                for (int i = 0; i < board.GetSize(); i++)
                 {
-                    maelstromsPresent = true;
-                }
-                if (coordToCheckAgainst == amaroks[i] && coordToCheckAgainst == playerPosition)
-                {
-                    amarokPresent = true;
-                }
-                if (coordToCheckAgainst == pits[i] && coordToCheckAgainst == playerPosition)
-                {
-                    pitPresent = true;
+                    for (int j = 0; j < board.GetSize(); j++)
+                    {
+                        coordToCheckAgainst = (i, j);
+
+                        if (coordToCheckAgainst == maelstroms[k] && coordToCheckAgainst == playerPosition && maelstroms[k] != (0, 0))
+                        {
+                            maelstromsPresent = true;
+                        }
+                        if (coordToCheckAgainst == amaroks[k] && coordToCheckAgainst == playerPosition && amaroks[k] != (0, 0))
+                        {
+                            amarokPresent = true;
+                        }
+                        if (coordToCheckAgainst == pits[k] && coordToCheckAgainst == playerPosition && pits[k] != (0, 0))
+                        {
+                            pitPresent = true;
+                        }
+                        if (coordToCheckAgainst == fountain.GetFountainLocation())
+                        {
+                            board.fountianPresent = true;
+                        }
+                    }
                 }
 
-            }
 
-            for (int i = 0; i < board.GetSize(); i++)
-            {
-                for (int j = 0; j < board.GetSize(); j++)
-                    coordToCheckAgainst = (i + 1, j);
-                if (coordToCheckAgainst == maelstroms[i] && coordToCheckAgainst == playerPosition)
+                for (int i = 0; i < board.GetSize(); i++)
                 {
-                    maelstromNear = true;
-                }
-                if (coordToCheckAgainst == amaroks[i] && coordToCheckAgainst == playerPosition)
-                {
-                    amarokNear = true;
-                }
-                if (coordToCheckAgainst == pits[i] && coordToCheckAgainst == playerPosition)
-                {
-                    pitNear = true;
-                }
-            }
+                    for (int j = 0; j < board.GetSize(); j++)
+                    {
+                        coordToCheckAgainst = (i + 1, j);
 
-            for (int i = 0; i < board.GetSize(); i++)
-            {
-                for (int j = 0; j < board.GetSize(); j++)
-                    coordToCheckAgainst = (i, j + 1);
-                if (coordToCheckAgainst == maelstroms[i] && coordToCheckAgainst == playerPosition)
-                {
-                    maelstromNear = true;
+                        if (coordToCheckAgainst == maelstroms[k] && coordToCheckAgainst == playerPosition && maelstroms[k] != (0, 0))
+                        {
+                            maelstromNear = true;
+                        }
+                        if (coordToCheckAgainst == amaroks[k] && coordToCheckAgainst == playerPosition && amaroks[k] != (0, 0))
+                        {
+                            amarokNear = true;
+                        }
+                        if (coordToCheckAgainst == pits[k] && coordToCheckAgainst == playerPosition && pits[k] != (0, 0))
+                        {
+                            pitNear = true;
+                        }
+                    }
                 }
-                if (coordToCheckAgainst == amaroks[i] && coordToCheckAgainst == playerPosition)
-                {
-                    amarokNear = true;
-                }
-                if (coordToCheckAgainst == pits[i] && coordToCheckAgainst == playerPosition)
-                {
-                    pitNear = true;
-                }
-            }
 
-            for (int i = 0; i < board.GetSize(); i++)
-            {
-                for (int j = 0; j < board.GetSize(); j++)
-                    coordToCheckAgainst = (i + 1, j + 1);
-                if (coordToCheckAgainst == maelstroms[i] && coordToCheckAgainst == playerPosition)
+                for (int i = 0; i < board.GetSize(); i++)
                 {
-                    maelstromNear = true;
+                    for (int j = 0; j < board.GetSize(); j++)
+                    {
+                        coordToCheckAgainst = (i, j + 1);
+                        if (coordToCheckAgainst == maelstroms[k] && coordToCheckAgainst == playerPosition && maelstroms[k] != (0, 0))
+                        {
+                            maelstromNear = true;
+                        }
+                        if (coordToCheckAgainst == amaroks[k] && coordToCheckAgainst == playerPosition && amaroks[k] != (0, 0))
+                        {
+                            amarokNear = true;
+                        }
+                        if (coordToCheckAgainst == pits[k] && coordToCheckAgainst == playerPosition && pits[k] != (0, 0))
+                        {
+                            pitNear = true;
+                        }
+                    }
                 }
-                if (coordToCheckAgainst == amaroks[i] && coordToCheckAgainst == playerPosition)
+
+                for (int i = 0; i < board.GetSize(); i++)
                 {
-                    amarokNear = true;
+                    for (int j = 0; j < board.GetSize(); j++)
+                    {
+                        coordToCheckAgainst = (i + 1, j + 1);
+                        if (coordToCheckAgainst == maelstroms[k] && coordToCheckAgainst == playerPosition && maelstroms[k] != (0, 0))
+                        {
+                            maelstromNear = true;
+                        }
+                        if (coordToCheckAgainst == amaroks[k] && coordToCheckAgainst == playerPosition && amaroks[k] != (0, 0))
+                        {
+                            amarokNear = true;
+                        }
+                        if (coordToCheckAgainst == pits[k] && coordToCheckAgainst == playerPosition && pits[k] != (0, 0))
+                        {
+                            pitNear = true;
+                        }
+                    }
                 }
-                if (coordToCheckAgainst == pits[i] && coordToCheckAgainst == playerPosition)
+                for (int i = 0; i < board.GetSize(); i++)
                 {
-                    pitNear = true;
+                    for (int j = 0; j < board.GetSize(); j++)
+                    {
+                        coordToCheckAgainst = (i - 1, j);
+                        if (coordToCheckAgainst == maelstroms[k] && coordToCheckAgainst == playerPosition && maelstroms[k] != (0, 0))
+                        {
+                            maelstromNear = true;
+                        }
+                        if (coordToCheckAgainst == amaroks[k] && coordToCheckAgainst == playerPosition && amaroks[k] != (0, 0))
+                        {
+                            amarokNear = true;
+                        }
+                        if (coordToCheckAgainst == pits[k] && coordToCheckAgainst == playerPosition && pits[k] != (0, 0))
+                        {
+                            pitNear = true;
+                        }
+                    }
                 }
-            }
-            for (int i = 0; i < board.GetSize(); i++)
-            {
-                for (int j = 0; j < board.GetSize(); j++)
-                    coordToCheckAgainst = (i - 1, j);
-                if (coordToCheckAgainst == maelstroms[i] && coordToCheckAgainst == playerPosition)
+                for (int i = 0; i < board.GetSize(); i++)
                 {
-                    maelstromNear = true;
+                    for (int j = 0; j < board.GetSize(); j++)
+                    {
+                        coordToCheckAgainst = (i, j - 1);
+                        if (coordToCheckAgainst == maelstroms[k] && coordToCheckAgainst == playerPosition && maelstroms[k] != (0, 0))
+                        {
+                            maelstromNear = true;
+                        }
+                        if (coordToCheckAgainst == amaroks[k] && coordToCheckAgainst == playerPosition && amaroks[k] != (0, 0))
+                        {
+                            amarokNear = true;
+                        }
+                        if (coordToCheckAgainst == pits[k] && coordToCheckAgainst == playerPosition && pits[k] != (0, 0))
+                        {
+                            pitNear = true;
+                        }
+                    }
                 }
-                if (coordToCheckAgainst == amaroks[i] && coordToCheckAgainst == playerPosition)
+                for (int i = 0; i < board.GetSize(); i++)
                 {
-                    amarokNear = true;
-                }
-                if (coordToCheckAgainst == pits[i] && coordToCheckAgainst == playerPosition)
-                {
-                    pitNear = true;
-                }
-            }
-            for (int i = 0; i < board.GetSize(); i++)
-            {
-                for (int j = 0; j < board.GetSize(); j++)
-                    coordToCheckAgainst = (i, j - 1);
-                if (coordToCheckAgainst == maelstroms[i] && coordToCheckAgainst == playerPosition)
-                {
-                    maelstromNear = true;
-                }
-                if (coordToCheckAgainst == amaroks[i] && coordToCheckAgainst == playerPosition)
-                {
-                    amarokNear = true;
-                }
-                if (coordToCheckAgainst == pits[i] && coordToCheckAgainst == playerPosition)
-                {
-                    pitNear = true;
-                }
-            }
-            for (int i = 0; i < board.GetSize(); i++)
-            {
-                for (int j = 0; j < board.GetSize(); j++)
-                    coordToCheckAgainst = (i - 1, j - 1);
-                if (coordToCheckAgainst == maelstroms[i] && coordToCheckAgainst == playerPosition)
-                {
-                    maelstromNear = true;
-                }
-                if (coordToCheckAgainst == amaroks[i] && coordToCheckAgainst == playerPosition)
-                {
-                    amarokNear = true;
-                }
-                if (coordToCheckAgainst == pits[i] && coordToCheckAgainst == playerPosition)
-                {
-                    pitNear = true;
+                    for (int j = 0; j < board.GetSize(); j++)
+                    {
+                        coordToCheckAgainst = (i - 1, j - 1);
+                        if (coordToCheckAgainst == maelstroms[k] && coordToCheckAgainst == playerPosition && maelstroms[k] != (0, 0))
+                        {
+                            maelstromNear = true;
+                        }
+                        if (coordToCheckAgainst == amaroks[k] && coordToCheckAgainst == playerPosition && amaroks[k] != (0, 0))
+                        {
+                            amarokNear = true;
+                        }
+                        if (coordToCheckAgainst == pits[k] && coordToCheckAgainst == playerPosition && pits[k] != (0, 0))
+                        {
+                            pitNear = true;
+                        }
+                    }
                 }
             }
         }
