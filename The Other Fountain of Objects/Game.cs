@@ -90,6 +90,7 @@ namespace The_Other_Fountain_of_Objects
             SetGameState(); //establishes game state for beginning 
             board.BoardBuilder(InputValidator.GetVaidatedSize());//builds array of coordinates reprsenting the board.
             player.InitialPlayerLocation();//places the player at the start/end location.
+            player.ArrowCreator(InputValidator.GetVaidatedSize());
             AdvasaryCreator(); //generates advasaries in the quantity appropriate for the board size, and it places them randomly.
 
         }

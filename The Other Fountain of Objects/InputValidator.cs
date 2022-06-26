@@ -10,19 +10,6 @@ namespace The_Other_Fountain_of_Objects
     {
         static int validatedBoardSize;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         public static int GetVaidatedSize()
         {
             return validatedBoardSize;
@@ -63,6 +50,12 @@ namespace The_Other_Fountain_of_Objects
         {
             input = input.ToUpper();
 
+            if (input == "A") //***this is not an implemented function.***
+            {
+                Console.WriteLine("Which direction would you like to fire your arrow? " +
+                    "(N)orth, (S)outh, (E)ast, or (W)est: ");
+                return true;
+            }
             if (input == "N")
             {
                 player.SetPlayerLocation(board, player, (1,0));

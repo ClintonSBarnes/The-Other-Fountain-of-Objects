@@ -55,7 +55,7 @@ namespace The_Other_Fountain_of_Objects
                 Console.WriteLine("Where would you like to move? (N)orth, (S)outh, (E)ast, or (W)est: ");
 
                 input = Console.ReadLine();
-
+                //***If arrows are going to be implemented, this is the where the input will occur.***
                 validTest = InputValidator.PlayerMoveInputValidation(board, player, input);
                 if (validTest == false)
                 {
@@ -81,6 +81,10 @@ namespace The_Other_Fountain_of_Objects
             board.RoomDetailsBuilder(board, player.GetPlayerPosition(), fountain);//***************current to do.
             board.BoardUpdater(player);//not sure about this location for this fuction.
             Console.WriteLine($"You are in the room at (Row={board.GetPlayerPosition().Item1}, Column={board.GetPlayerPosition().Item2})");
+            if (player.GetArrowCount() >0)
+            {
+                Console.WriteLine($"You currently have {player.GetArrowCount()} arrows.");
+            }
             if (board.pitNear == true)
             {
                 Console.WriteLine(pitNear);
@@ -113,7 +117,7 @@ namespace The_Other_Fountain_of_Objects
             }
             if (board.maelstromsPresent == true)
             {
-                //insert random movement logic here.
+                player.SetPlayerLocation(board,player, (+1,+2));
             }
 
             if (fountain.GetFountainLocation == player.GetPlayerPosition && fountain.GetFountainOn() == false)
@@ -149,7 +153,7 @@ namespace The_Other_Fountain_of_Objects
             }
             else if (player.GetPlayerAlive() == false)
             {
-                Console.WriteLine("\n--------" +
+                Console.WriteLine("\n---------" +
                                   "\n| x   x |" +
                                   "\n|   U   |" +
                                   "\n|  xxx  |" +

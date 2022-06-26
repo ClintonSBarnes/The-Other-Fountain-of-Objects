@@ -3,5 +3,4 @@ Game game = new Game();
 game.Run();
 
 //remaining UNDONE:
-//maelstrom relocation system
 //arrow system

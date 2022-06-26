@@ -10,9 +10,24 @@ namespace The_Other_Fountain_of_Objects
     {
          (int, int) playerLocation;
         bool playerAlive = true;
+        int arrowCount;
 
 
-
+        public int GetArrowCount()
+        {
+            return arrowCount;
+        }
+        public void ArrowCreator(int difficulty)
+        {
+            if (difficulty == 6)
+            {
+                arrowCount = 6;
+            }
+            if (difficulty == 8)
+            {
+                arrowCount = 12;
+            }
+        }
         public void InitialPlayerLocation()
         {
             playerLocation = (0, 0);
@@ -41,6 +56,20 @@ namespace The_Other_Fountain_of_Objects
 
         public void SetPlayerLocation(Board board,Player player, (int x,int y) input) //(DONE)
         {
+            if (input == (+1,+2) && player.playerLocation.Item1 + input.x <= board.GetSize() && input.y <= board.GetSize())
+            {
+                player.playerLocation.Item1 = input.x;
+                player.playerLocation.Item2 = input.y;
+               
+            }
+            if (input == (+1,+2) && player.playerLocation.Item1 + input.x > board.GetSize())
+            {
+                player.playerLocation.Item1 = 0+input.x;
+            }
+            if (input == (+1,+2) &&  input.y > board.GetSize())
+            {
+                player.playerLocation.Item2 = 0+input.y;
+            }
             if (player.playerLocation.Item1 + input.x <= board.GetSize() && player.playerLocation.Item2 + input.y <= board.GetSize() && player.playerLocation.Item1 + input.x > -1 && player.playerLocation.Item2 + input.y > -1)
             {
                 player.playerLocation = (player.playerLocation.Item1 + input.x, player.playerLocation.Item2 + input.y);
