@@ -27,8 +27,20 @@ namespace The_Other_Fountain_of_Objects
             while (GetGameState() == GameState.playing)
             {
                 Dialogue.RoomStatus(board, player, fountain);
+                if (EndLoss(player.GetPlayerAlive()) == false)
+                {
+                    break;
+                }
+                if (player.GetPlayerAlive() == true && player.GetPlayerPosition() == (0, 0) && fountain.GetFountainOn() == true)
+                {
+                    Console.WriteLine("You are a real winner. Way to be, chief.");
+                    break;
+                }
+                
 
             }
+
+
 
         }
 
@@ -82,7 +94,18 @@ namespace The_Other_Fountain_of_Objects
 
         }
 
-
+        public static bool EndLoss(bool loss)
+        {
+            if (loss = false)
+            {
+                Console.WriteLine("You have died. All is lost. You are a failure!");
+                return loss;
+            }
+            else
+            {
+                return loss;
+            }
+        }
     }
 }
 enum GameState { playing, win, lose, }

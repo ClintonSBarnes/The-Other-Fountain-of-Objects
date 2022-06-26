@@ -95,27 +95,33 @@ namespace The_Other_Fountain_of_Objects
                             ||(coordToCheckAgainst == maelstroms[k] && (coordToCheckAgainst.Item1+1, coordToCheckAgainst.Item2 + 1) == playerPosition && maelstroms[k] != (0, 0))
                             ||(coordToCheckAgainst == maelstroms[k] && (coordToCheckAgainst.Item1 -1, coordToCheckAgainst.Item2 ) == playerPosition && maelstroms[k] != (0, 0))
                             ||(coordToCheckAgainst == maelstroms[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0))
-                            ||(coordToCheckAgainst == maelstroms[k] && (coordToCheckAgainst.Item1-1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0)))
+                            ||(coordToCheckAgainst == maelstroms[k] && (coordToCheckAgainst.Item1-1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0))
+                            || (coordToCheckAgainst == maelstroms[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2 + 1) == playerPosition && maelstroms[k] != (0, 0))
+                            || (coordToCheckAgainst == maelstroms[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0)))
                         {
                             maelstromNear = true;
                         }
                         
-                        if  ((coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 + 1) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2 + 1) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0)))
+                        if  ((coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2) == playerPosition && amaroks[k] != (0, 0))
+                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 + 1) == playerPosition && amaroks[k] != (0, 0))
+                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2 + 1) == playerPosition && amaroks[k] != (0, 0))
+                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2) == playerPosition && amaroks[k] != (0, 0))
+                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 - 1) == playerPosition && amaroks[k] != (0, 0))
+                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2 - 1) == playerPosition && amaroks[k] != (0, 0))
+                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2 + 1) == playerPosition && amaroks[k] != (0, 0))
+                            || (coordToCheckAgainst == amaroks[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2 - 1) == playerPosition && amaroks[k] != (0, 0)))
                         {
                             amarokNear = true;
                         }
                        
-                        if  ((coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 + 1) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2 + 1) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0))
-                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2 - 1) == playerPosition && maelstroms[k] != (0, 0)))
+                        if ((coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2) == playerPosition && pits[k] != (0, 0))
+                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 + 1) == playerPosition && pits[k] != (0, 0))
+                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2 + 1) == playerPosition && pits[k] != (0, 0))
+                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2) == playerPosition && pits[k] != (0, 0))
+                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1, coordToCheckAgainst.Item2 - 1) == playerPosition && pits[k] != (0, 0))
+                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2 - 1) == playerPosition && pits[k] != (0, 0))
+                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 - 1, coordToCheckAgainst.Item2 + 1) == playerPosition && pits[k] != (0, 0))
+                            || (coordToCheckAgainst == pits[k] && (coordToCheckAgainst.Item1 + 1, coordToCheckAgainst.Item2 - 1) == playerPosition && pits[k] != (0, 0)))
                         {
                             pitNear = true;
                         }
@@ -139,6 +145,7 @@ namespace The_Other_Fountain_of_Objects
         public (int, int) GetPlayerPosition()
         {
             return playerPosition;
+        
         }
 
 

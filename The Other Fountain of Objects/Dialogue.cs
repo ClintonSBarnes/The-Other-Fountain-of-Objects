@@ -78,7 +78,7 @@ namespace The_Other_Fountain_of_Objects
         public static void RoomStatus(Board board, Player player, Fountain fountain)
         {
             PrintBreakLine();
-            board.RoomDetailsBuilder(board, player.GetPlayerPosition(),fountain);//***************current to do.
+            board.RoomDetailsBuilder(board, player.GetPlayerPosition(), fountain);//***************current to do.
             board.BoardUpdater(player);//not sure about this location for this fuction.
             Console.WriteLine($"You are in the room at (Row={board.GetPlayerPosition().Item1}, Column={board.GetPlayerPosition().Item2})");
             if (board.pitNear == true)
@@ -95,16 +95,29 @@ namespace The_Other_Fountain_of_Objects
             }
             if (board.amarokPresent == true || board.pitPresent == true)
             {
-                //insert death logic here.
+                if (board.pitPresent == true)
+                {
+                    Console.WriteLine("Well, boss...it looks like you have found your self in a 'you're dead' type of situation. \n" +
+                        "You fell in a pit. I'm just saying that you are dead now. Sorry, bruh.\nPress something to move on.");
+                    player.SetPlayerAlive(false);
+                    Console.ReadKey();
+                }
+                else
+                {
+                    Console.WriteLine("Dude, remember when I told you about those Amaroks?..Well, there is one in this room,...and now you're dead. Sucks for you, guy.\nPress something to move on.");
+                    player.SetPlayerAlive(false);
+
+                }
+
+
             }
             if (board.maelstromsPresent == true)
             {
                 //insert random movement logic here.
             }
-           
+
             if (fountain.GetFountainLocation == player.GetPlayerPosition && fountain.GetFountainOn() == false)
             {
-                //need to finish logic for fountain off/on...
                 string fountainInput;
                 bool inputValidation = false;
                 while (inputValidation == false)
@@ -117,6 +130,10 @@ namespace The_Other_Fountain_of_Objects
                     {
                         Console.WriteLine("That was not a valid input. Please try again.");
                     }
+                    else
+                    {
+                        inputValidation = true;
+                    }
                 }
 
             }
@@ -124,10 +141,21 @@ namespace The_Other_Fountain_of_Objects
             {
                 Console.WriteLine(fountainOn);
             }
+            if (player.GetPlayerAlive() == true)
+            {
+                Console.WriteLine("What do you want to do?");
 
-            Console.WriteLine("What do you want to do?");
+                PlayerMoveMenu(board, player, fountain);
+            }
+            else if (player.GetPlayerAlive() == false)
+            {
+                Console.WriteLine("\n--------" +
+                                  "\n| x   x |" +
+                                  "\n|   U   |" +
+                                  "\n|  xxx  |" +
+                                  "\n---------");
 
-            PlayerMoveMenu(board, player, fountain);
+            }
 
         }
         public static void PrintBreakLine()
