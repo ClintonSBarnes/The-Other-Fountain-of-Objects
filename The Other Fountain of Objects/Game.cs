@@ -21,6 +21,8 @@ namespace The_Other_Fountain_of_Objects
         //RUN - This is the method that handles the program.
         public void Run()
         {
+            DateTime startTime = DateTime.Now;
+
 
             StartGame(); //this method sets up the initial game state.
 
@@ -36,12 +38,13 @@ namespace The_Other_Fountain_of_Objects
                     Console.WriteLine("You are a real winner. Way to be, chief.");
                     break;
                 }
-                
+
 
             }
 
+            TimeSpan passedTime = startTime - DateTime.Now;
 
-
+            Console.WriteLine($"You spent {passedTime} in the cave.");
         }
 
 
