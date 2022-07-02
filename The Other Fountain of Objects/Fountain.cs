@@ -41,7 +41,7 @@ namespace The_Other_Fountain_of_Objects
         {
             fountainOn = false;
             Random number = new Random();
-            SetFountain(size, (number.Next(1, size), number.Next(1,size)), player);
+            SetFountain(size, (number.Next(number.Next(1, size)), number.Next(number.Next(1,size))), player);
             
         }
 

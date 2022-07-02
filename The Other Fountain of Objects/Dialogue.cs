@@ -63,6 +63,7 @@ namespace The_Other_Fountain_of_Objects
                     Console.WriteLine("That was not a valid input. Please try again.");
                 }
                 board.BoardUpdater(player);
+                Console.Clear();
             }
             board.BoardUpdater(player);
             Dialogue.RoomStatus(board, player, fountain);
